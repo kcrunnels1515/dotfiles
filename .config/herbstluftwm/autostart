@@ -43,7 +43,7 @@ hc keybind $Mod-Shift-Return spawn dmenu_run -fn 'Mononoki Nerd Font:size=10' -n
 hc keybind $Mod-Shift-d spawn rofi -show drun -show-icons
 
 # My dmenu scripts (Alt+Ctrl+Key)
-hc keybind Mod1-Control-f spawn st -e ranger
+hc keybind Mod1-Control-f spawn termite -e ranger
 hc keybind Mod1-Control-s spawn ./.dmenu/dmenu-scrot.sh
 hc keybind Mod1-Control-e spawn alacritty -e nvim
 hc keybind Mod1-Control-n spawn networkmanager_dmenu

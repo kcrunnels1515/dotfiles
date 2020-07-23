@@ -51,7 +51,7 @@ hc keybind Mod1-Control-t spawn ./.dmenu/dmenu-system-actions.sh
 
 ## My applications (Super+Alt+Key)
 hc keybind $Mod-Mod1-r spawn "$HOME/.scripts/dmenurecord.sh"
-#hc keybind $Mod-Mod1-n spawn st -e newsboat
+hc keybind $Mod-Mod1-c spawn termite -e calc
 #hc keybind $Mod-Mod1-r spawn st -e rtv
 #hc keybind $Mod-Mod1-e spawn st -e neomutt
 hc keybind $Mod-Mod1-h spawn st -e htop

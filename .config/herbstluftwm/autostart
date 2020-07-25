@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
-#  ____ _____ 
-# |  _ \_   _|  Derek Taylor (DistroTube)
-# | | | || |  	http://www.youtube.com/c/DistroTube
-# | |_| || |  	http://www.gitlab.com/dwt1/ 
-# |____/ |_|  	
-#        
-# A customized configuration for herbstluftwm (http://www.herbstluftwm.org)     
-# Modified by Derek Taylor (http://www.gitlab.com/dwt1/ )
+# _  ______ ____
+#| |/ / ___|  _ \
+#| ' / |   | |_) |
+#| . \ |___|  _ <
+#|_|\_\____|_| \_\      kcrunnels15@gmail.com
+##############################################
 
 hc() {
     herbstclient "$@"
@@ -20,16 +18,10 @@ nitrogen --restore &
 /usr/lib/polkit-kde-authentication-agent-1 &
 numlockx on &
 
-# Uncomment the following lines to use xmobar as the panel
-# Remember to comment out the last 8 lines of this config, so that
-# polybar will no longer launch on startup.
-# $HOME/.config/herbstluftwm/xmobar
-
 # remove all existing keybindings
 hc keyunbind --all
 
 # keybindings
-# if you have a super key you will be much happier with Mod set to Mod4
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
 
@@ -39,29 +31,29 @@ hc keybind $Mod-q close
 hc keybind $Mod-Return spawn alacritty
 
 # Dmenu launcher
-hc keybind $Mod-Shift-Return spawn dmenu_run -fn 'Mononoki Nerd Font:size=10' -nb '#292d3e' -nf '#bbc5ff' -sb '#82AAFF' -sf '#292d3e' -p 'dmenu:'
+hc keybind $Mod-Shift-Return spawn dmenu_run -fn 'Mononoki Nerd Font:size=10' -nb '#292d3e' -nf '#bbc5ff' -sb '#82AAFF' -sf '#292d3e' -p 'Run>'
 hc keybind $Mod-Shift-d spawn rofi -show drun -show-icons
 
-# My dmenu scripts (Alt+Ctrl+Key)
+# Terminal/Dmenu utils (Alt+Ctrl+Key)
 hc keybind Mod1-Control-f spawn termite -e ranger
 hc keybind Mod1-Control-s spawn ./.dmenu/dmenu-scrot.sh
 hc keybind Mod1-Control-e spawn alacritty -e nvim
 hc keybind Mod1-Control-n spawn networkmanager_dmenu
 hc keybind Mod1-Control-t spawn ./.dmenu/dmenu-system-actions.sh
 
-## My applications (Super+Alt+Key)
+## Other terminal applications (Super+Alt+Key)
 hc keybind $Mod-Mod1-r spawn "$HOME/.scripts/dmenurecord.sh"
 hc keybind $Mod-Mod1-c spawn termite -e calc
-#hc keybind $Mod-Mod1-r spawn st -e rtv
-#hc keybind $Mod-Mod1-e spawn st -e neomutt
-hc keybind $Mod-Mod1-h spawn st -e htop
-#hc keybind $Mod-Mod1-t spawn st -e sh ./scripts/tig-script.sh
-#hc keybind $Mod-Mod1-f spawn st -e ~/.config/vifm/scripts/vifmrun
-#hc keybind $Mod-Mod1-j spawn st -e joplin
-#hc keybind $Mod-Mod1-c spawn st -e cmus
-#hc keybind $Mod-Mod1-i spawn st -e irssi
-#hc keybind $Mod-Mod1-y spawn st -e youtube-viewer
-#hc keybind $Mod-Mod1-a spawn st -e ncpamixer
+hc keybind $Mod-Mod1-h spawn termite -e htop
+#hc keybind $Mod-Mod1-r spawn termite -e
+#hc keybind $Mod-Mod1-e spawn termite -e
+#hc keybind $Mod-Mod1-t spawn termite -e
+#hc keybind $Mod-Mod1-f spawn termite -e
+#hc keybind $Mod-Mod1-j spawn termite -e 
+#hc keybind $Mod-Mod1-c spawn termite -e 
+#hc keybind $Mod-Mod1-i spawn termite -e 
+#hc keybind $Mod-Mod1-y spawn termite -e
+#hc keybind $Mod-Mod1-a spawn termite -e 
 
 # basic movement
 # focusing clients
@@ -103,7 +95,7 @@ hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # tags
-# tag_names=( {1..9} )
+#tag_names=( {1..9} )
 tag_names=( "" "" "" "" "" "" "" "" "" "" )
 tag_keys=( {1..9} 0 )
 
@@ -175,7 +167,7 @@ hc attr theme.active.inner_color '#3E4A00'
 hc attr theme.active.outer_color '#3E4A00'
 hc attr theme.background_color '#141414'
 
-hc set window_gap 5
+hc set window_gap 3
 hc set frame_padding 0
 hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 1

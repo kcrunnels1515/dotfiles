@@ -45,7 +45,7 @@ hc keybind Mod1-Control-t spawn ./.dmenu/dmenu-system-actions.sh
 hc keybind $Mod-Mod1-r spawn "$HOME/.scripts/dmenurecord.sh"
 hc keybind $Mod-Mod1-c spawn termite -e calc
 hc keybind $Mod-Mod1-h spawn termite -e htop
-#hc keybind $Mod-Mod1-r spawn termite -e
+hc keybind $Mod-Mod1-p spawn termite -e pianobar
 #hc keybind $Mod-Mod1-e spawn termite -e
 #hc keybind $Mod-Mod1-t spawn termite -e
 #hc keybind $Mod-Mod1-f spawn termite -e
@@ -131,6 +131,7 @@ hc mouseunbind --all
 hc mousebind $Mod-Button1 move
 hc mousebind $Mod-Button2 zoom
 hc mousebind $Mod-Button3 resize
+hc mousebind Button3 xqp 0 && "$HOME/.scripts/xmenu.sh"
 
 # focus
 hc keybind $Mod-BackSpace   cycle_monitor

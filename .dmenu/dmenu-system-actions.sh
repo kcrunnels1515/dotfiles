@@ -38,7 +38,7 @@ case "$choice" in
     systemctl reboot
   ;;
   screenlock)
-    slock_start
+    xlock
   ;;
 	*)
 		exit 1

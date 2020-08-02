@@ -45,7 +45,7 @@ hc keybind Mod1-Control-t spawn ./.dmenu/dmenu-system-actions.sh
 hc keybind $Mod-Mod1-r spawn "$HOME/.scripts/dmenurecord.sh"
 hc keybind $Mod-Mod1-c spawn termite -e calc
 hc keybind $Mod-Mod1-h spawn termite -e htop
-hc keybind $Mod-Mod1-p spawn termite -e pianobar
+hc keybind $Mod-Mod1-p spawn termite --class pianobar -e pianobar
 #hc keybind $Mod-Mod1-e spawn termite -e
 #hc keybind $Mod-Mod1-t spawn termite -e
 #hc keybind $Mod-Mod1-f spawn termite -e
@@ -189,6 +189,7 @@ hc rule focus=on # normally focus new clients
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+hc rule class=pianobar tag=
 
 # unlock, just to be sure
 hc unlock

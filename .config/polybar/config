@@ -1132,7 +1132,7 @@ label-disconnected-foreground = ${colors.foreground}
 [module/wireless-network]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-interface = ${env:WIRELESS}
+interface = wlp3s0
 interval = 3.0
 label-connected = "%essid% "
 

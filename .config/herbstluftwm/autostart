@@ -46,7 +46,7 @@ hc keybind $Mod-Mod1-r spawn "$HOME/.scripts/dmenurecord.sh"
 hc keybind $Mod-Mod1-c spawn termite -e calc
 hc keybind $Mod-Mod1-h spawn termite -e ytop
 hc keybind $Mod-Mod1-p spawn termite --class pianobar -e pianobar
-#hc keybind $Mod-Mod1-e spawn termite -e
+hc keybind $Mod-Mod1-Return spawn "$HOME/.dmenu/dmenu-hc-layouts.sh"
 #hc keybind $Mod-Mod1-t spawn termite -e
 #hc keybind $Mod-Mod1-f spawn termite -e
 #hc keybind $Mod-Mod1-j spawn termite -e 

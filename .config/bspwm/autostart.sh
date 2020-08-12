@@ -19,5 +19,5 @@ run sxhkd -c ~/.config/bspwm/sxhkd/sxhkdrc &
 numlockx on &
 picom --config $HOME/.config/bspwm/picom.conf &
 /usr/lib/polkit-kde-authentication-agent-1 &
-run volumeicon &
 nitrogen --restore &
+dunst &

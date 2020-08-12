@@ -30,13 +30,14 @@ super + alt + r
 super + alt + c
   $HOME/.config/bspwm/scripts/scratchpad.sh calcterm
 super + alt + h
-  termite -e htop
+  termite -e ytop
 #################################################################
 # CONTROL + ALT KEYS
 #################################################################
 #################################################################
 # ALT + ... KEYS
 #################################################################
+hc keybind $Mod-Mod1-p spawn termite --class pianobar -e pianobar # needed to set class to move to last workspace
 #################################################################
 #VARIETY KEYS WITH PYWAL
 #################################################################
@@ -143,6 +144,9 @@ super + BackSpace
 super + alt + {_,shift + }{Left,Down,Up,Right}
 	~/.config/bspwm/scripts/move-window {_,edge-}{west,south,north,east}
 
+super + alt + p
+	termite --class pianobar -e pianobar
+
 #################################################################
 # SUPER + CONTROL KEYS
 #################################################################
@@ -172,33 +176,18 @@ super + shift + x
 super + {_,shift + }{h,j,k,l}
 	bspc node --{focus,swap} {west,south,north,east}
 
+# Focus/swap windows by direction
+super + {_,shift + }{Left,Down,Up,Right}
+	bspc node --{focus,swap} {west,south,north,east}
+
 # Flip layout vertically/horizontally
 super + {_,shift + }a
 	bspc node @/ --flip {vertical,horizontal}
-
-# Move focused window to other monitor
-super + shift + Left
-	bspc node -m next --follow
-
-# Move focused window to other monitor
-super + shift + Right
-		bspc node -m next --follow
-
-# Move focused window to other monitor
-super + shift + Up
-	bspc node -m next --follow
-
-# Move focused window to other monitor
-super + shift + Down
-		bspc node -m next --follow
 
 #################################################################
 # SUPER + CONTROL KEYS
 #################################################################
 
-# Focus/swap windows by direction
-super + ctrl + {Left,Down,Up,Right}
-	bspc node --{focus} {west,south,north,east}
 
 # Contract tiled space
 alt + ctrl + {h,j,k,l}
@@ -229,7 +218,7 @@ super + ctrl + {_,shift +}{1-9}
 alt + Tab
 	bspc desktop -f '^{1-9,10}'
 
-	#Focus selected desktop
+#Focus selected desktop
 alt + shift + Tab
 	bspc desktop -f '^{1-9,10}'
 

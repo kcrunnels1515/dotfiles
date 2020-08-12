@@ -62,5 +62,6 @@ bspc rule -a Arandr state=floating
 #bspc config external_rules_command ~/.config/bspwm/scripts/adjust-new-window
 bspc rule -a calcterm sticky=on state=floating hidden=on
 bspc rule -a dropdown sticky=on state=floating hidden=on
+bspc rule -a pianobar state=fullscreen desktop=10
 termite --class dropdown -e "fish" &
 termite --class calcterm -e "calc" &

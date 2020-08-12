@@ -29,10 +29,10 @@ bspc config remove_disabled_monitors true
 bspc config merge_overlapping_monitors true
 
 #BSPWM coloring
-bspc config normal_border_color		"#383837"
-bspc config active_border_color		"#59d114"
-bspc config focused_border_color	"#d13714"
-bspc config presel_feedback_color	"#5e81ac"
+bspc config normal_border_color		"#454545"
+bspc config active_border_color		"#ff0000"
+bspc config focused_border_color	"#2247d8"
+bspc config presel_feedback_color	"#a1c928"
 #bspc config urgent_border_color 	"#dd2727"
 
 

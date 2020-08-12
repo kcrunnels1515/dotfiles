@@ -17,6 +17,7 @@ picom &
 nitrogen --restore &
 /usr/lib/polkit-kde-authentication-agent-1 &
 numlockx on &
+dunst &
 
 # remove all existing keybindings
 hc keyunbind --all

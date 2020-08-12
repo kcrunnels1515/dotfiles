@@ -1,6 +1,3 @@
-#+TITLE: My Dotfiles
-#+AUTHOR: Kelly Runnels
-
 ## Dependencies
 ### Any window manager:
 * dmenu

@@ -18,6 +18,8 @@ nitrogen --restore &
 /usr/lib/polkit-kde-authentication-agent-1 &
 numlockx on &
 dunst &
+volumeicon &
+nm-applet &
 
 # remove all existing keybindings
 hc keyunbind --all

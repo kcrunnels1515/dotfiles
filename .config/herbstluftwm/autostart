@@ -48,7 +48,7 @@ hc keybind Mod1-Control-t spawn ./.dmenu/dmenu-system-actions.sh
 
 ## Other terminal applications (Super+Alt+Key)
 hc keybind $Mod-Mod1-r spawn "$HOME/.scripts/dmenurecord.sh"
-hc keybind $Mod-Mod1-c spawn $myAppTerm calc
+hc keybind $Mod-Mod1-c spawn $myAppTerm R
 hc keybind $Mod-Mod1-h spawn $myAppTerm ytop
 hc keybind $Mod-Mod1-p spawn termite --class pianobar -e pianobar # needed to set class to move to last workspace
 hc keybind $Mod-Mod1-Return spawn "$HOME/.dmenu/dmenu-hc-layouts.sh"

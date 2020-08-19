@@ -7,7 +7,7 @@ quit
 staggered
 dwindle
 center_two")
-choice=$(echo -e "${options[@]}" | dmenu -i -p 'Herbstluftwm Layout: ')
+choice=$(echo -e "${options[@]}" | dmenu -l 4 -i -p 'Herbstluftwm Layout: ')
 
 case "$choice" in
   quit)

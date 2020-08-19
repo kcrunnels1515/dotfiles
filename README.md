@@ -37,7 +37,7 @@ There shouldn't be any, other than the universal deps.
 
 ## Install
 Add an alias in your shell rc that corresponds to the following:
-`/usr/bin/git --git-dir=/home/kellyr/.cfg/ --work-tree=/home/kellyr`
+`/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME`
 Then, in a restarted shell, run
 `config config --local status.showUntrackedFiles no`
 Finally, run

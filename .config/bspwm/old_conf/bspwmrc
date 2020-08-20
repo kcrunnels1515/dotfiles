@@ -1,30 +1,23 @@
-#! /bin/sh
+#!/bin/sh
 
-pgrep -x sxhkd > /dev/null || sxhkd -c $HOME/.config/bspwm/sxhkdrc &
-xsetroot -solid '#226475' -cursor_name left_ptr &
-picom &
-nitrogen --restore &
-/usr/lib/polkit-kde-authentication-agent-1 &
-numlockx on &
-dunst &
-volumeicon &
-nm-applet &
-$HOME/.config/bspwm/panel.sh
+#LAUNCHERS
+$HOME/.config/bspwm/autostart.sh
+#fix for moving spotify to specific workspace
+#bspc config external_rules_command ~/.config/bspwm/scripts/external_rules_command
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10
-# bspc monitor -d          
-
-bspc config border_radius        8
+#BSPWM configuration
+#bspc config border_radius       8
 bspc config border_width         2
-bspc config window_gap      	 2
-bspc config split_ratio          0.5
-bspc config borderless_monocle   false
-bspc config gapless_monocle      true
+bspc config window_gap           3
 bspc config top_padding          20
 bspc config bottom_padding       3
 bspc config left_padding         3
 bspc config right_padding        3
 bspc config single_monocle       false
+#bspc config click_to_focus       true
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
 #bspc config focus_by_distance    true
 bspc config focus_follows_pointer true
 #bspc config history_aware_focus  true
@@ -34,10 +27,6 @@ bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
 bspc config remove_disabled_monitors true
 bspc config merge_overlapping_monitors true
-bspc config center_pseudo_tiled		false
-bspc config ignore_ewmh_fullscreen	false
-bspc config ignore_ewmh_struts		false
-bspc config ignore_ewmh_fullscreen	false
 
 #BSPWM coloring
 bspc config normal_border_color		"#454545"
@@ -46,11 +35,33 @@ bspc config focused_border_color	"#2247d8"
 bspc config presel_feedback_color	"#a1c928"
 #bspc config urgent_border_color 	"#dd2727"
 
+
+#Single monitor
+bspc monitor -d          
+
+#Dual monitor
+#find out names with arandr or xrandr
+#bspc monitor DP-2 -d 1 2 3 4 5 6 7 8 9
+#bspc monitor LVDS1 -d 1 2 3 4
+#bspc monitor DP3 -d  5 6 7 8 9
+#bspc monitor HDMI-0 -d 1 2 3 4 5 6 7 8 9 10
+#bspc monitor HDMI-1 -d 1 2 3 4 5 6 7 8 9 10
+#bspc monitor HDMI1 -d 1 2 3 4 5
+#bspc monitor HDMI2 -d 6 7 8 9 10
+
+#Fullscreen applications
+bspc rule -a VirtualBox Machine state=fullscreen
+
+#Floating applications
+bspc rule -a Arandr state=floating
+
 ###External rules
 ##Pseudo automatic mode: always splits focused window when opening new window
 #bspc config external_rules_command ~/.config/bspwm/scripts/pseudo_automatic_mode
 ##Adjust new window: splits biggest windows to keep windows about the same size
 #bspc config external_rules_command ~/.config/bspwm/scripts/adjust-new-window
-bspc rule -a calcterm state=floating 
-bspc rule -a dropdown state=floating 
+bspc rule -a calcterm sticky=on state=floating hidden=on
+bspc rule -a dropdown sticky=on state=floating hidden=on
 bspc rule -a pianobar state=fullscreen desktop=10
+termite --class dropdown -e "fish" &
+termite --class calcterm -e "calc" &

@@ -116,17 +116,17 @@ font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
 
-modules-left = bspwm xwindow
-modules-center = 
-modules-right = networkspeedup networkspeeddown arrow2 memory2 arrow3 cpu2 arrow2 pavolume arrow3 arch-aur-updates arrow2 date
+modules-left = jgmenu bspwm
+modules-center = xwindow
+modules-right = networkspeedup networkspeeddown wireless-network pavolume date
 
 tray-detached = false
 tray-offset-x = 0
 tray-offset-y = 0
-tray-position = right
 tray-padding = 2
 tray-maxsize = 20
 tray-scale = 1.0
+tray-position = right
 tray-background = ${colors.background}
 
 scroll-up = bspwm-desknext

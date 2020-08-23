@@ -182,8 +182,8 @@ font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
 
-modules-left = jgmenu ewmh
-modules-center = xwindow
+modules-left = jgmenu ewmh xwindow
+modules-center = 
 modules-right = networkspeedup networkspeeddown wireless-network pavolume date
 
 tray-detached = false

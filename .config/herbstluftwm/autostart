@@ -33,11 +33,14 @@ myAppTerm="termite -e" # the terminal for running a program inside a terminal
 hc keybind $Mod-Shift-x quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-q close
+hc keybind $Mod-Escape spawn xkill
 hc keybind $Mod-Return spawn $myTerm
 
 # Dmenu launcher
 hc keybind $Mod-Shift-Return spawn dmenu_run -fn 'Mononoki Nerd Font:size=10' -p 'Run>'
 hc keybind $Mod-Shift-d spawn rofi -show drun -show-icons
+
+hc keybind $Mod-w spawn brave
 
 # Terminal/Dmenu utils (Alt+Ctrl+Key)
 hc keybind Mod1-Control-f spawn $myAppTerm ranger
@@ -117,6 +120,8 @@ done
 # cycle through tags
 hc keybind $Mod-period use_index +1 --skip-visible
 hc keybind $Mod-comma  use_index -1 --skip-visible
+hc keybind $Mod-Shift-period move_index +1 --skip-visible
+hc keybind $Mod-Shift-comma  move_index -1 --skip-visible
 
 # layouting
 hc keybind $Mod-r remove

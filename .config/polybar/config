@@ -818,10 +818,10 @@ format-online-background = ${colors.background}
 [module/networkspeedup]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-;interface = wlp3s0
+;interface = wlan0
 ;interface = enp14s0
 ;interface = enp0s31f6
-interface = wlp3s0
+interface = wlan0
 label-connected = "%upspeed:7% "
 format-connected = <label-connected>
 format-connected-prefix = " "
@@ -836,10 +836,10 @@ click-left = "networkmanager_dmenu >/dev/null 2>&1 &"
 [module/networkspeeddown]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-;interface = wlp3s0
+;interface = wlan0
 ;interface = enp14s0
 ;interface = enp0s31f6
-interface = wlp3s0
+interface = wlan0
 label-connected = "%downspeed:7% "
 format-connected = <label-connected>
 format-connected-prefix = "  "
@@ -1091,7 +1091,7 @@ label-disconnected-foreground = ${colors.foreground}
 [module/wireless-network]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-interface = wlp3s0
+interface = wlan0
 interval = 3.0
 label-connected = "%essid% "
 

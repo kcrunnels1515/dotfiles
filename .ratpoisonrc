@@ -1,0 +1,52 @@
+###########################################################
+# some ratpoison eye candy
+exec xsetroot -cursor_name left_ptr
+exec nitrogen --restore
+exec picom
+exec /usr/bin/rpws init 9 -k
+exec /usr/bin/local/sloppy
+startup_message off
+set border 2
+set barpadding 0 0 0 0
+set padding 2 2 2 2
+set fgcolor #bbc5ff
+set bgcolor #282a36
+set font -xos4-terminus-medium-r-normal-*-*-140-*-*-c-*-iso8859-1
+
+# REBIND DEFAULT ESCAPE TO space
+unbind ;
+escape ;
+# BIND KEYS -- keep in alphabetical order
+# NOTE: can overwrite, just don't overwrite navigation n,p
+bind W exec sleep 5; import -window root screen-$(date +%Y%m%d%H%M%S).png
+bind f exec termite -e ranger
+bind ' exec alacritty
+bind n exec networkmanager_manager
+bind t exec ~/.dmenu/dmenu-system-actions.sh
+bind c exec termite -e R
+bind h exec termite -e ytop
+bind p exec termite -e pianobar
+###########################################################
+# DEFINE KEYS
+# -- use keys similar to dwm to ease transitions
+# and because they don't clobber much else...
+# motion and wm control
+definekey top Super_L-1 rpws 1
+definekey top Super_L-2 rpws 2
+definekey top Super_L-3 rpws 3
+definekey top Super_L-4 rpws 4
+definekey top Super_L-5 rpws 5
+definekey top Super_L-6 rpws 6
+definekey top Super_L-7 rpws 7
+definekey top Super_L-8 rpws 8
+definekey top Super_L-9 rpws 9
+definekey top Super_L-n next
+definekey top Super_L-m prev
+definekey top Super_L-R restart
+# applications and utilities
+definekey top Super_L-P exec $(dmenu_path|dmenu)
+definekey top Super_L-D
+###########################################################
+# ALIASES
+alias screenshot exec import -window root screenshot-$(date +%Y%m%d%H%M%S).png
+alias dscreenshot exec sleep 5; import -window root screenshot-$(date +%Y

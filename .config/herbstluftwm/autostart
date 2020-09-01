@@ -171,7 +171,7 @@ hc attr theme.urgent.color orange
 hc attr theme.inner_width 0
 hc attr theme.inner_color black
 hc attr theme.border_width 2
-hc attr theme.floating.border_width 4
+hc attr theme.floating.border_width 2
 hc attr theme.floating.outer_width 1
 hc attr theme.floating.outer_color black
 hc attr theme.active.inner_color '#3E4A00'
@@ -181,7 +181,7 @@ hc attr theme.background_color '#141414'
 hc set window_gap 0
 hc set frame_padding 0
 hc set smart_window_surroundings 0
-hc set smart_frame_surroundings 1
+hc set smart_frame_surroundings 0
 hc set mouse_recenter_gap 0
 hc set focus_crosses_monitor_boundaries 1
 hc set swap_monitors_to_get_tag 1
@@ -192,6 +192,7 @@ hc unrule -F
 hc rule class=VirtualBox pseudotile=on
 hc rule class=VirtualBox fullscreen=on
 hc rule class=yakuake float=on
+hc rule class=mpv fullscreen=on
 hc rule focus=on # normally focus new clients
 #hc rule focus=off # normally do not focus new clients
 # give focus to most common terminals

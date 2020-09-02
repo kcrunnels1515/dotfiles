@@ -46,8 +46,9 @@ format-offset =
 ; =======================
 
 ;Gotham theme ==========
-background = #0a0f14
-foreground = #99d1ce
+background = #0099d1ce
+foreground = #0a0f14
+;foreground = #99d1ce
 alert = #d26937
 volume-min = #2aa889
 volume-med = #edb443
@@ -182,9 +183,9 @@ font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=9;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=9;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=9;1"
 
-modules-left = jgmenu ewmh xwindow
-modules-center = 
-modules-right =  networkspeedup networkspeeddown wireless-network pavolume date
+modules-left = networkspeedup networkspeeddown wireless-network 
+modules-center = jgmenu ewmh
+modules-right =  pavolume date
 
 tray-detached = false
 tray-offset-x = 0
@@ -560,9 +561,9 @@ date-alt = " %a %b %d, %Y"
 time = %l:%M%p
 time-alt = %l:%M%p
 format-prefix = " "
-format-prefix-foreground = #fefefe
-format-foreground = #fefefe
-format-background = #7197E7
+format-prefix-foreground = #0a0f14
+format-foreground = #0a0f14
+format-background = #26459b
 label = "%date% %time% "
 
 #################################################################
@@ -825,9 +826,9 @@ interface = wlan0
 label-connected = "%upspeed:7% "
 format-connected = <label-connected>
 format-connected-prefix = "  "
-format-connected-prefix-foreground = #fefefe
-format-connected-foreground = #fefefe
-format-connected-background = #A77AC4
+format-connected-prefix-foreground = #0a0f14
+format-connected-foreground = #0a0f14
+format-connected-background = #644c75
 click-left = "networkmanager_dmenu >/dev/null 2>&1 &"
 
 
@@ -843,9 +844,9 @@ interface = wlan0
 label-connected = "%downspeed:7% "
 format-connected = <label-connected>
 format-connected-prefix = "  "
-format-connected-prefix-foreground = #fefefe
-format-connected-foreground = #fefefe
-format-connected-background = #A77AC4
+format-connected-prefix-foreground = #0a0f14
+format-connected-foreground = #0a0f14
+format-connected-background = #644c75
 click-left = "networkmanager_dmenu >/dev/null 2>&1 &"
 
 ################################################################################
@@ -873,7 +874,7 @@ click-right = exec pavucontrol
 click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
 scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
 scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
-format-foreground = #fefefe
+format-foreground = #0a0f14
 format-background = #3a890f
 
 

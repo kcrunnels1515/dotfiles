@@ -1,4 +1,4 @@
 #! /bin/bash 
-picom &
+#picom &
 nitrogen --restore &
 dwmblocks &

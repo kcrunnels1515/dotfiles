@@ -28,29 +28,29 @@ hc keyunbind --all
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
 myTerm="alacritty" # the terminal for work
-myAppTerm="termite -e" # the terminal for running a program inside a terminal
+myAppTerm="st -e" # the terminal for running a program inside a terminal
 
-hc keybind $Mod-Shift-x quit
-hc keybind $Mod-Shift-r reload
-hc keybind $Mod-q close
-hc keybind $Mod-Escape spawn xkill
-hc keybind $Mod-Return spawn $myTerm
+hc keybind $Mod-Shift-x quit #Quit herbstluftwm
+hc keybind $Mod-Shift-r reload #Reload herbstluftwm
+hc keybind $Mod-q close #Close window
+hc keybind $Mod-Escape spawn xkill #Spawn xkill
+hc keybind $Mod-Return spawn $myTerm #Spawn my terminal emulator
 
 # Dmenu launcher
-hc keybind $Mod-Shift-Return spawn dmenu_run -fn 'Mononoki Nerd Font:size=10' -p 'Run>'
-hc keybind $Mod-Shift-d spawn rofi -show drun -show-icons
+hc keybind $Mod-Shift-Return spawn dmenu_run -fn 'Mononoki Nerd Font:size=10' -p 'Run>' #Start dmenu launcher
+hc keybind $Mod-Shift-d spawn rofi -show drun -show-icons #Start rofi launcher
 
-hc keybind $Mod-w spawn brave
+hc keybind $Mod-w spawn brave #Start Brave browser
 
 # Terminal/Dmenu utils (Alt+Ctrl+Key)
-hc keybind Mod1-Control-f spawn $myAppTerm ranger
-hc keybind Mod1-Control-s spawn ./.dmenu/dmenu-scrot.sh
-hc keybind Mod1-Control-e spawn $myTerm -e nvim # i prefer alacritty for using vim
-hc keybind Mod1-Control-n spawn networkmanager_dmenu
-hc keybind Mod1-Control-t spawn ./.dmenu/dmenu-system-actions.sh
+hc keybind Mod1-Control-f spawn $myAppTerm ranger #Open ranger
+hc keybind Mod1-Control-s spawn ./.dmenu/dmenu-scrot.sh #Run my screenshot dmenu scripts
+hc keybind Mod1-Control-e spawn emacs #Open session of Emacs
+hc keybind Mod1-Control-n spawn networkmanager_dmenu #Manage connections with networkmanager_dmenu
+hc keybind Mod1-Control-t spawn ./.dmenu/dmenu-system-actions.sh #Sleep, shutdown, lock screen, etc.
 
 ## Other terminal applications (Super+Alt+Key)
-hc keybind $Mod-Mod1-r spawn "$HOME/.scripts/dmenurecord.sh"
+hc keybind $Mod-Mod1-r spawn "$HOME/.scripts/dmenurecord.sh" #
 hc keybind $Mod-Mod1-c spawn $myAppTerm R
 hc keybind $Mod-Mod1-h spawn $myAppTerm ytop
 hc keybind $Mod-Mod1-p spawn termite --class pianobar -e pianobar # needed to set class to move to last workspace
@@ -108,10 +108,10 @@ tag_names=( "" "" "" "" "" "" "" "" "" "" )
 tag_keys=( {1..9} 0 )
 
 hc rename default "${tag_names[0]}" || true
-for i in ${!tag_names[@]} ; do
+for i in "${!tag_names[@]}" ; do
     hc add "${tag_names[$i]}"
     key="${tag_keys[$i]}"
-    if ! [ -z "$key" ] ; then
+    if [ -n "$key" ] ; then
         hc keybind "$Mod-$key" use_index "$i"
         hc keybind "$Mod-Shift-$key" move_index "$i"
     fi
@@ -194,6 +194,7 @@ hc rule class=VirtualBox fullscreen=on
 hc rule class=yakuake float=on
 hc rule class=mpv fullscreen=on
 hc rule focus=on # normally focus new clients
+hc rule class=Emacs tag=
 #hc rule focus=off # normally do not focus new clients
 # give focus to most common terminals
 #hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
@@ -218,6 +219,6 @@ panel=~/.config/herbstluftwm/panel.sh
 [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
-    "$panel" $monitor &
+    "$panel" "$monitor" &
 done
 

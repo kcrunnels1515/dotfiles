@@ -10,6 +10,11 @@ hc() {
     herbstclient "$@"
 }
 
+move_and_follow(keynum) {
+    herbstclient move_index $keynum
+    herbstclient use_index $keynum
+}
+
 hc emit_hook reload
 
 xsetroot -solid '#226475'
@@ -20,6 +25,7 @@ numlockx on &
 dunst &
 volumeicon &
 nm-applet &
+/usr/bin/emacs --daemon &
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -45,7 +51,7 @@ hc keybind $Mod-w spawn brave #Start Brave browser
 # Terminal/Dmenu utils (Alt+Ctrl+Key)
 hc keybind Mod1-Control-f spawn $myAppTerm ranger #Open ranger
 hc keybind Mod1-Control-s spawn ./.dmenu/dmenu-scrot.sh #Run my screenshot dmenu scripts
-hc keybind Mod1-Control-e spawn emacs #Open session of Emacs
+hc keybind Mod1-Control-e spawn emacsclient -c -a emacs #Open session of Emacs
 hc keybind Mod1-Control-n spawn networkmanager_dmenu #Manage connections with networkmanager_dmenu
 hc keybind Mod1-Control-t spawn ./.dmenu/dmenu-system-actions.sh #Sleep, shutdown, lock screen, etc.
 
@@ -114,6 +120,7 @@ for i in "${!tag_names[@]}" ; do
     if [ -n "$key" ] ; then
         hc keybind "$Mod-$key" use_index "$i"
         hc keybind "$Mod-Shift-$key" move_index "$i"
+#        hc keybind "$Mod-Control-$key" move_and_follow "$i"
     fi
 done
 
@@ -194,7 +201,7 @@ hc rule class=VirtualBox fullscreen=on
 hc rule class=yakuake float=on
 hc rule class=mpv fullscreen=on
 hc rule focus=on # normally focus new clients
-hc rule class=Emacs tag=
+#hc rule class=Emacs tag=
 #hc rule focus=off # normally do not focus new clients
 # give focus to most common terminals
 #hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on

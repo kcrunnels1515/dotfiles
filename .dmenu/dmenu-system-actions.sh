@@ -38,7 +38,7 @@ case "$choice" in
     systemctl reboot
   ;;
   screenlock)
-    xlock
+    i3lock -c 000000
   ;;
 	*)
 		exit 1

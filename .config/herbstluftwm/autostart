@@ -21,6 +21,7 @@ dunst &
 volumeicon &
 nm-applet &
 /usr/bin/emacs --daemon &
+mpd --kill && mpd &
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -29,13 +30,14 @@ hc keyunbind --all
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
 myTerm="alacritty" # the terminal for work
+myTabbedTerm="tabbed alacritty --embed"
 myAppTerm="st -e" # the terminal for running a program inside a terminal
 
 hc keybind $Mod-Shift-x quit #Quit herbstluftwm
 hc keybind $Mod-Shift-r reload #Reload herbstluftwm
 hc keybind $Mod-q close #Close window
 hc keybind $Mod-Escape spawn xkill #Spawn xkill
-hc keybind $Mod-Return spawn $myTerm #Spawn my terminal emulator
+hc keybind $Mod-Return spawn $myTabbedTerm #Spawn my terminal emulator
 
 # Dmenu launcher
 hc keybind $Mod-Shift-Return spawn dmenu_run -fn 'Mononoki Nerd Font:size=10' -p 'Run>' #Start dmenu launcher
@@ -49,6 +51,7 @@ hc keybind Mod1-Control-s spawn ./.dmenu/dmenu-scrot.sh #Run my screenshot dmenu
 hc keybind Mod1-Control-e spawn emacsclient -c -a '' #Open session of Emacs
 hc keybind Mod1-Control-n spawn networkmanager_dmenu #Manage connections with networkmanager_dmenu
 hc keybind Mod1-Control-t spawn ./.dmenu/dmenu-system-actions.sh #Sleep, shutdown, lock screen, etc.
+hc keybind Mod1-Control-d spawn ./.dmenu/dmenu-zathura.sh
 
 ## Other terminal applications (Super+Alt+Key)
 hc keybind $Mod-Mod1-r spawn "$HOME/.scripts/dmenurecord.sh" #

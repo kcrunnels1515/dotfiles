@@ -50,40 +50,21 @@ Congrats! The dotfiles are installed!
 | Keybind | What it does |
 |---|---|
 | Super + Enter | Opens terminal |
-|---|---|
 | Super + q | Close program |
-|---|---|
 | Super + Shift + x | Exit window manager |
-|---|---|
 | Super + Shift + r | Reload configuration |
-|---|---|
 | Super + Shift + Enter | Dmenu |
-|---|---|
 | Super + Shift + d | Opens Rofi |
-|---|---|
 | Super + Alt + Enter | Herbstluftwm Custom Layouts Menu |
-|---|---|
 | Control + Alt + t | System Actions menu |
-|---|---|
 | Super + *number* | Switch to workspace *number* |
-|---|---|
 | Super + Shift + *number* | Move window to workspace *number* |
-|---|---|
 | Super + Left,Right,Up,Down | Focus window Left, Right, Up, or Down |
-|---|---|
 | Super + Shift + Left,Right,Up,Down | Move window Left, Right, Up, or Down |
-|---|---|
 | Super + s | Toggle floating windows |
-|---|---|
 | Super + f | Toggle fullscreen windows |
-|---|---|
 | Super + Space | Cycle though layouts |
-|---|---|
 | Super + , | Move to workspace on the left |
-|---|---|
 | Super + . | Move to workspace on the right |
-|---|---|
 | Super + Shift , | Move window to left workspace |
-|---|---|
 | Super + Tab | Cycle though windows |
-|---|---|

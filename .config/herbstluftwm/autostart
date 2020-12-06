@@ -52,6 +52,7 @@ hc keybind Mod1-Control-e spawn emacsclient -c -a '' #Open session of Emacs
 hc keybind Mod1-Control-n spawn networkmanager_dmenu #Manage connections with networkmanager_dmenu
 hc keybind Mod1-Control-t spawn ./.dmenu/dmenu-system-actions.sh #Sleep, shutdown, lock screen, etc.
 hc keybind Mod1-Control-d spawn ./.dmenu/dmenu-zathura.sh
+hc keybind Mod1-Control-v spawn ./.dmenu/dmenu-videos.sh
 
 ## Other terminal applications (Super+Alt+Key)
 hc keybind $Mod-Mod1-r spawn "$HOME/.scripts/dmenurecord.sh" #
@@ -131,6 +132,7 @@ hc keybind $Mod-Shift-comma  move_index -1 --skip-visible
 # layouting
 hc keybind $Mod-r remove
 hc keybind $Mod-s floating toggle
+hc keybind $Mod-Shift-s attr clients.focus.floating toggle
 hc keybind $Mod-f fullscreen toggle
 hc keybind $Mod-p pseudotile toggle
 # The following cycles through the available layouts within a frame, but skips

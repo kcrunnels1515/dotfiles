@@ -822,7 +822,7 @@ type = internal/network
 ;interface = wlan0
 ;interface = enp14s0
 ;interface = enp0s31f6
-interface = wlan0
+interface = wlp3s0
 label-connected = "%upspeed:7% "
 format-connected = <label-connected>
 format-connected-prefix = "  "
@@ -840,7 +840,7 @@ type = internal/network
 ;interface = wlan0
 ;interface = enp14s0
 ;interface = enp0s31f6
-interface = wlan0
+interface = wlp3s0
 label-connected = "%downspeed:7% "
 format-connected = <label-connected>
 format-connected-prefix = "  "
@@ -1092,7 +1092,7 @@ label-disconnected-foreground = ${colors.foreground}
 [module/wireless-network]
 ;https://github.com/jaagr/polybar/wiki/Module:-network
 type = internal/network
-interface = wlan0
+interface = wlp3s0
 interval = 3.0
 label-connected = "%essid% "
 

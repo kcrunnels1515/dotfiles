@@ -24,7 +24,7 @@ myBrowser = "brave "               -- Sets firefox as browser for tree select
 -- myBrowser = myTerminal ++ " -e lynx " -- Sets lynx as browser for tree select
 
 myEditor :: String
-myEditor = myTerminal ++ " -e vim "    -- Sets vim as editor for tree select
+myEditor = "emacsclient -c -a ''"    -- Sets vim as editor for tree select
 
 myBorderWidth :: Dimension
 myBorderWidth = 2          -- Sets border width for windows

@@ -1,52 +1,58 @@
-###########################################################
-# some ratpoison eye candy
-exec xsetroot -cursor_name left_ptr
-exec nitrogen --restore
-exec picom
-exec /usr/bin/rpws init 9 -k
-exec /usr/bin/local/sloppy
-startup_message off
-set border 2
-set barpadding 0 0 0 0
-set padding 2 2 2 2
-set fgcolor #bbc5ff
-set bgcolor #282a36
-set font -xos4-terminus-medium-r-normal-*-*-140-*-*-c-*-iso8859-1
+# This is a sample .ratpoisonrc file
+# Copyright (C) 2003, 2004 Shawn Betts
+#
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided the copyright
 
-# REBIND DEFAULT ESCAPE TO space
-unbind ;
-escape ;
-# BIND KEYS -- keep in alphabetical order
-# NOTE: can overwrite, just don't overwrite navigation n,p
-bind W exec sleep 5; import -window root screen-$(date +%Y%m%d%H%M%S).png
-bind f exec termite -e ranger
-bind ' exec alacritty
-bind n exec networkmanager_manager
-bind t exec ~/.dmenu/dmenu-system-actions.sh
-bind c exec termite -e R
-bind h exec termite -e ytop
-bind p exec termite -e pianobar
-###########################################################
-# DEFINE KEYS
-# -- use keys similar to dwm to ease transitions
-# and because they don't clobber much else...
-# motion and wm control
-definekey top Super_L-1 rpws 1
-definekey top Super_L-2 rpws 2
-definekey top Super_L-3 rpws 3
-definekey top Super_L-4 rpws 4
-definekey top Super_L-5 rpws 5
-definekey top Super_L-6 rpws 6
-definekey top Super_L-7 rpws 7
-definekey top Super_L-8 rpws 8
-definekey top Super_L-9 rpws 9
-definekey top Super_L-n next
-definekey top Super_L-m prev
-definekey top Super_L-R restart
-# applications and utilities
-definekey top Super_L-P exec $(dmenu_path|dmenu)
-definekey top Super_L-D
-###########################################################
-# ALIASES
-alias screenshot exec import -window root screenshot-$(date +%Y%m%d%H%M%S).png
-alias dscreenshot exec sleep 5; import -window root screenshot-$(date +%Y
+# Set the prefix key to that of screen's default
+escape semicolon
+
+# Gets rid of that ugly crosshairs default cursor
+# and set the background to black
+exec xsetroot -solid black -cursor_name left_ptr
+
+# Emulate screen by starting with a new xterm
+exec nitrogen --restore
+
+# Bind e to our favorite editor
+bind e exec alacritty
+
+# bind s to interactively run a surfraw query on freshmeat
+bind s colon exec xterm -e freshmeat
+
+# bind b (`b' for browse) to interactively ask for an URL to open
+bind b colon exec mozilla http://www.
+
+# Use the name of the program rather than the title in the window list
+defwinname name
+
+# bind M-! to store the current frame layout in slot #1
+bind M-exclam exec ratpoison -c "setenv fs1 `ratpoison -c 'fdump'`"
+
+#bind M-1 to restore the frame layout in slot #1
+bind M-1 exec ratpoison -c "frestore `ratpoison -c 'getenv fs1'`"
+
+# Do the same for slot #2 and bind it to M-@ and M-2, respectively.
+bind M-at exec ratpoison -c "setenv fs2 `ratpoison -c 'fdump'`"
+bind M-2 exec ratpoison -c "frestore `ratpoison -c 'getenv fs2'`"
+
+# Give ourselves another slot on M-# and M-3, respectively.
+bind M-numbersign exec ratpoison -c "setenv fs3 `ratpoison -c 'fdump'`"
+bind M-3 exec ratpoison -c "frestore `ratpoison -c 'getenv fs3'`"
+
+# Here's a hack from John Meacham:
+
+bind a exec ratpoison -d :0.0 -c "echo `date +'%r - %A %n    %D - %B'`  `cal | tail -n +2 | sed -e 's/^Su/\n\n Su/' -e 's/.*/ & /' -e \"s/\ $(date +%e)\ /\<$(date +%e)\>/\"`"
+
+# it produces output like the following in the message window, very handy:
+#         +-----------------------+
+#         |05:05:24 PM - Tuesday  |
+#         |   09/09/03 - September|
+#         |                       |
+#         |Su Mo Tu We Th Fr Sa   |
+#         |    1  2  3  4  5  6   |
+#         | 7  8< 9>10 11 12 13   |
+#         |14 15 16 17 18 19 20   |
+#         |21 22 23 24 25 26 27   |
+#         |28 29 30               |
+#         +-----------------------+

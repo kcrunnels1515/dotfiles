@@ -1,19 +1,3 @@
--- Xmonad is a dynamically tiling X11 window manager that is written and
--- configured in Haskell. Official documentation: https://xmonad.org
-
--- This is the xmonad configuration of Derek Taylor (DistroTube)
--- My YouTube: http://www.youtube.com/c/DistroTube
--- My GitLab:  http://www.gitlab.com/dwt1/
-
--- This config was getting massively long, so I have made this a modular
--- config that sources multiple config files. Look under the imports for
--- "Custom" modules. Those are my config files and they can be found in:
--- ~/.xmonad/lib/Custom
-
--- Keep in mind, that my configs are purposely bloated with examples of
--- what you can do with xmonad. It is written more as a study guide rather
--- than a config that you should download and use.
-
 ------------------------------------------------------------------------
 -- IMPORTS
 ------------------------------------------------------------------------
@@ -56,7 +40,8 @@ myStartupHook = do
           spawnOnce "picom &"
           spawnOnce "nm-applet &"
           spawnOnce "volumeicon &"
-          spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x292d3e --height 22 &"
+          spawnOnce "~/.config/polybar/launch.sh"
+          spawnOnce "/usr/bin/emacs --daemon &"
           -- spawnOnce "kak -d -s mysession &"
           setWMName "LG3D"
 
@@ -76,13 +61,13 @@ xmobarEscape = concatMap doubleLts
         doubleLts x   = [x]
 
 myWorkspaces :: [String]
-myWorkspaces = clickable . (map xmobarEscape)
+myWorkspaces = -- clickable . (map xmobarEscape)
                -- $ ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-               $ ["dev", "www", "sys", "doc", "vbox", "chat", "mus", "vid", "gfx"]
-  where
-        clickable l = [ "<action=xdotool key super+" ++ show (n) ++ "> " ++ ws ++ " </action>" |
-                      (i,ws) <- zip [1..9] l,
-                      let n = i ]
+               ["dev", "www", "sys", "doc", "vbox", "chat", "mus", "vid", "gfx"]
+--  where
+--        clickable l = [ "<action=xdotool key super+" ++ show (n) ++ "> " ++ ws ++ " </action>" |
+--                      (i,ws) <- zip [1..9] l,
+--                      let n = i ]
 
 ------------------------------------------------------------------------
 -- MANAGEHOOK
@@ -99,10 +84,10 @@ myManageHook = composeAll
      -- I'm doing it this way because otherwise I would have to write out
      -- the full name of my workspaces.
      [ className =? "obs"     --> doShift ( myWorkspaces !! 7 )
-     , title =? "firefox"     --> doShift ( myWorkspaces !! 1 )
-     , className =? "mpv"     --> doShift ( myWorkspaces !! 7 )
-     , className =? "vlc"     --> doShift ( myWorkspaces !! 7 )
-     , className =? "Gimp"    --> doShift ( myWorkspaces !! 8 )
+--     , title =? "firefox"     --> doShift ( myWorkspaces !! 1 )
+--     , className =? "mpv"     --> doShift ( myWorkspaces !! 7 )
+--     , className =? "vlc"     --> doShift ( myWorkspaces !! 7 )
+--     , className =? "Gimp"    --> doShift ( myWorkspaces !! 8 )
      , className =? "Gimp"    --> doFloat
      , title =? "Oracle VM VirtualBox Manager"     --> doFloat
      , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
@@ -124,13 +109,14 @@ myLogHook = fadeInactiveLogHook fadeAmount
 ------------------------------------------------------------------------
 main :: IO ()
 main = do
-    xmproc <- spawnPipe "xmobar -x 0 /home/kellyr/.config/xmobar/xmobarrc"
     xmonad $ ewmh def
         { manageHook = ( isFullscreen --> doFullFloat ) <+> myManageHook <+> manageDocks
+
         -- Run xmonad commands from command line with "xmonadctl command". Commands include:
         -- shrink, expand, next-layout, default-layout, restart-wm, xterm, kill, refresh, run,
         -- focus-up, focus-down, swap-up, swap-down, swap-master, sink, quit-wm. You can run
         -- "xmonadctl 0" to generate full list of commands written to ~/.xsession-errors.
+
         , handleEventHook    = serverModeEventHookCmd
                                <+> serverModeEventHook
                                <+> serverModeEventHookF "XMONAD_PRINT" (io . putStrLn)
@@ -143,16 +129,16 @@ main = do
         , borderWidth        = myBorderWidth
         , normalBorderColor  = myNormColor
         , focusedBorderColor = myFocusColor
-        , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
-                        { ppOutput = \x -> hPutStrLn xmproc x  -- >> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
-                        , ppCurrent = xmobarColor "#c3e88d" "" . wrap "[" "]" -- Current workspace in xmobar
-                        , ppVisible = xmobarColor "#c3e88d" ""                -- Visible but not current workspace
-                        , ppHidden = xmobarColor "#82AAFF" "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor "#c792ea" ""        -- Hidden workspaces (no windows)
-                        , ppTitle = xmobarColor "#b3afc2" "" . shorten 60     -- Title of active window in xmobar
-                        , ppSep =  "<fc=#666666> <fn=2>|</fn> </fc>"                     -- Separators in xmobar
-                        , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"  -- Urgent workspace
-                        , ppExtras  = [windowCount]                           -- # of windows current workspace
-                        , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
-                        }
+        , logHook = workspaceHistoryHook <+> myLogHook -- <+> dynamicLogWithPP xmobarPP
+--                        { ppOutput = \x -> hPutStrLn xmproc x  -- >> hPutStrLn xmproc1 x  >> hPutStrLn xmproc2 x
+--                        , ppCurrent = xmobarColor "#c3e88d" "" . wrap "[" "]" -- Current workspace in xmobar
+--                        , ppVisible = xmobarColor "#c3e88d" ""                -- Visible but not current workspace
+--                        , ppHidden = xmobarColor "#82AAFF" "" . wrap "*" ""   -- Hidden workspaces in xmobar
+--                        , ppHiddenNoWindows = xmobarColor "#c792ea" ""        -- Hidden workspaces (no windows)
+--                        , ppTitle = xmobarColor "#b3afc2" "" . shorten 60     -- Title of active window in xmobar
+--                        , ppSep =  "<fc=#666666> <fn=2>|</fn> </fc>"                     -- Separators in xmobar
+--                        , ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!"  -- Urgent workspace
+--                        , ppExtras  = [windowCount]                           -- # of windows current workspace
+--                        , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+--                        }
         } `additionalKeysP` myKeys

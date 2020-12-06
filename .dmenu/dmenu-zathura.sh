@@ -1,16 +1,21 @@
 #!/bin/bash
 
-# The famous "get a menu of emojis to copy" script.
-
-# Get user selection via dmenu from emoji file.
+# Gets all pdfs in $HOME, drops them into a file, then drops them into dmenu, then in zathura
 case $1 in
 	refresh)
-	find $HOME -iname '*.pdf' > ~/.local/share/pdfs
+	find $HOME -iname '*.pdf' -o -iname "*.doc*" > ~/.local/share/docs
 	exit 0
 	;;
 	*) 
 	chosen=$(cat ~/.local/share/pdfs | dmenu -i -l 15)
-	zathura $chosen
+	case $chosen in
+		*.pdf)
+			zathura $chosen
+			;;
+		*.doc*)
+			soffice $chosen
+			;;
+		esac
 	exit 0
 	;;
 esac

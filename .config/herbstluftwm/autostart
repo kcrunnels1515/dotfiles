@@ -13,6 +13,7 @@ hc() {
 hc emit_hook reload
 
 xsetroot -solid '#226475'
+xrandr --output HDMI1 --auto --right-of VGA1 &
 picom &
 nitrogen --restore &
 /usr/lib/polkit-kde-authentication-agent-1 &
@@ -216,9 +217,9 @@ hc unlock
 herbstclient set tree_style '╾│ ├└╼─┐'
 
 # do multi monitor setup here, e.g.:
-# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
+hc set_monitors 1366x768+0+0 1280x800+1366+0
 # or simply:
-hc detect_monitors
+#hc detect_monitors
 
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh
